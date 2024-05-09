@@ -1,6 +1,7 @@
 function calcularCadena(cadena) {
   const CERO=0
-  if (cadena.length!=0)
+  const TAMANIOCADENA=cadena.length
+  if (TAMANIOCADENA!=0)
     {
       return parseInt(cadena[0]);
     }
