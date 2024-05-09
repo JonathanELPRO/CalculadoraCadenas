@@ -20,9 +20,8 @@ function calcularCadena(cadena) {
           }
           if((caracterEsUnNumeroSeparadoPorComa || caracterEsElUltimoNumero || caracterEsUnNumeroSeparadoPorGuion || caracterEsUnNumeroSeparadoPorCaracterEspecificadoPorUsuario))
             {
-              console.log(caracter)
-              console.log(parseInt(cadenaNumeros.join('')))
-              if(parseInt(cadenaNumeros.join(''))<=1000)
+              let numeroASumarEsMenorIgual1000=parseInt(cadenaNumeros.join(''))<=1000
+              if(numeroASumarEsMenorIgual1000)
                 {
                   acumulacionSuma=acumulacionSuma+parseInt(cadenaNumeros.join(''))
 
