@@ -7,4 +7,7 @@ describe("Calculadora de cadenas", () => {
   it("Deberia retornar cero ya que la cadena que se envio esta vacia", () => {
     expect(calcularCadena("3")).toEqual(3);
   });
+  it("Deberia retornar 5 ya que la cadena que se envio tiene dos elementos", () => {
+    expect(calcularCadena("3,2")).toEqual(5);
+  });
 });
