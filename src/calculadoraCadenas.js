@@ -1,5 +1,6 @@
 function calcularCadena(cadena) {
-  return 0
+  const CERO=0
+  return CERO
 }
 
 export default calcularCadena;
