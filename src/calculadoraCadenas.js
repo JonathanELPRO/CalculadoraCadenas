@@ -18,16 +18,19 @@ function calcularCadena(cadena) {
           if (!isNaN(caracter)){
             cadenaNumeros.push(caracter)
           }
-          if((caracterEsUnNumeroSeparadoPorComa || caracterEsElUltimoNumero || caracterEsUnNumeroSeparadoPorGuion || caracterEsUnNumeroSeparadoPorCaracterEspecificadoPorUsuario))
+          if((caracterEsUnNumeroSeparadoPorComa || caracterEsElUltimoNumero || caracterEsUnNumeroSeparadoPorGuion || caracterEsUnNumeroSeparadoPorCaracterEspecificadoPorUsuario) && (parseInt(cadenaNumeros.join(''))<=1000))
             {
-              let numeroASumarEsMenorIgual1000=parseInt(cadenaNumeros.join(''))<=1000
-              if(numeroASumarEsMenorIgual1000)
-                {
+              
                   acumulacionSuma=acumulacionSuma+parseInt(cadenaNumeros.join(''))
 
-                }
+                
               cadenaNumeros=[]
             }
+            if((parseInt(cadenaNumeros.join(''))>1000))
+              {
+                cadenaNumeros=[]
+              }
+
         }
     }
   return acumulacionSuma
