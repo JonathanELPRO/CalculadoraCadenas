@@ -10,10 +10,13 @@ describe("Calculadora de cadenas", () => {
   it("Deberia retornar 5 ya que la cadena que se envio tiene dos elementos", () => {
     expect(calcularCadena("3,2")).toEqual(5);
   });
-  it("Deberia retornar 5 ya que la cadena que se envio tiene dos elementos", () => {
+  it("Deberia retornar 10", () => {
     expect(calcularCadena("3,2,5")).toEqual(10);
   });
-  it("Deberia retornar 5 ya que la cadena que se envio tiene dos elementos", () => {
+  it("Deberia retornar 17 tomando en cuenta el separador guion", () => {
     expect(calcularCadena("3-2,5-7")).toEqual(17);
+  });
+  it("Deberia retornar 26 tomando en cuenta el separaador del usuario", () => {
+    expect(calcularCadena("//[;] 3-2,5-7;9")).toEqual(26);
   });
 });
