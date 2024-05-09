@@ -10,7 +10,8 @@ function calcularCadena(cadena) {
           let siguienteCaracter=cadena[i+1]
           let caracterEsUnNumeroSeparadoPorComa=!isNaN(caracter) && siguienteCaracter=="," && i!=TAMANIOCADENA-1
           let caracterEsElUltimoNumero=i==TAMANIOCADENA-1
-          if(caracterEsUnNumeroSeparadoPorComa || caracterEsElUltimoNumero)
+          let caracterEsUnNumeroSeparadoPorGuion=!isNaN(caracter) && siguienteCaracter=="-" && i!=TAMANIOCADENA-1
+          if(caracterEsUnNumeroSeparadoPorComa || caracterEsElUltimoNumero || caracterEsUnNumeroSeparadoPorGuion)
             {
               acumulacionSuma=acumulacionSuma+parseInt(cadena[i])
             }
