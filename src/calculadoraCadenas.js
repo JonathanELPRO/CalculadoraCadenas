@@ -8,7 +8,7 @@ function calcularCadena(cadena) {
   if(TAMANIOCADENA==3){
     return parseInt(cadena[0])+parseInt(cadena[2])
   }
-  return 0
+  return CERO
 }
 
 export default calcularCadena;
