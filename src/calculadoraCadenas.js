@@ -4,16 +4,16 @@ function calcularCadena(cadena) {
   const TAMANIOCADENA=cadena.length
   if (TAMANIOCADENA!=0)
     {
-      for (let i=0;i<TAMANIOCADENA;i++)
+      for (let iteradorCadena=0;iteradorCadena<TAMANIOCADENA;iteradorCadena++)
         {
-          let caracter=cadena[i]
-          let siguienteCaracter=cadena[i+1]
-          let caracterEsUnNumeroSeparadoPorComa=!isNaN(caracter) && siguienteCaracter=="," && i!=TAMANIOCADENA-1
-          let caracterEsElUltimoNumero=i==TAMANIOCADENA-1
-          let caracterEsUnNumeroSeparadoPorGuion=!isNaN(caracter) && siguienteCaracter=="-" && i!=TAMANIOCADENA-1
+          let caracter=cadena[iteradorCadena]
+          let siguienteCaracter=cadena[iteradorCadena+1]
+          let caracterEsUnNumeroSeparadoPorComa=!isNaN(caracter) && siguienteCaracter=="," && iteradorCadena!=TAMANIOCADENA-1
+          let caracterEsElUltimoNumero=iteradorCadena==TAMANIOCADENA-1
+          let caracterEsUnNumeroSeparadoPorGuion=!isNaN(caracter) && siguienteCaracter=="-" && iteradorCadena!=TAMANIOCADENA-1
           if(caracterEsUnNumeroSeparadoPorComa || caracterEsElUltimoNumero || caracterEsUnNumeroSeparadoPorGuion)
             {
-              acumulacionSuma=acumulacionSuma+parseInt(cadena[i])
+              acumulacionSuma=acumulacionSuma+parseInt(caracter)
             }
         }
     }
