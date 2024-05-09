@@ -10,4 +10,7 @@ describe("Calculadora de cadenas", () => {
   it("Deberia retornar 5 ya que la cadena que se envio tiene dos elementos", () => {
     expect(calcularCadena("3,2")).toEqual(5);
   });
+  it("Deberia retornar 5 ya que la cadena que se envio tiene dos elementos", () => {
+    expect(calcularCadena("3,2,5")).toEqual(10);
+  });
 });
