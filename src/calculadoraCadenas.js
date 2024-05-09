@@ -3,7 +3,8 @@ function calcularCadena(cadena) {
   let acumulacionSuma=CERO
   const TAMANIOCADENA=cadena.length
   const SEPARADORUSUARIO=cadena[3]
-  if (TAMANIOCADENA!=0)
+  let cadenaEstaVacia=TAMANIOCADENA!=0
+  if (cadenaEstaVacia)
     {
       for (let iteradorCadena=0;iteradorCadena<TAMANIOCADENA;iteradorCadena++)
         {
