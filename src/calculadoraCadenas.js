@@ -10,13 +10,12 @@ function obtenerSeparadores(cadena){
   return separadores
 }
 
-function calcularCadena(cadena) {
+function sumarCadena(separadores,cadena){
   const CERO = 0;
   let acumulacionSuma = CERO;
   const TAMANIOCADENA = cadena.length;
   let cadenaEstaVacia = TAMANIOCADENA != 0;
   let cadenaNumeros = [];
-  let separadores =obtenerSeparadores(cadena)
   if (cadenaEstaVacia) {
     for (
       let iteradorCadena = 0;
@@ -76,6 +75,10 @@ function calcularCadena(cadena) {
     }
   }
   return acumulacionSuma;
+}
+function calcularCadena(cadena) {
+  let separadores =obtenerSeparadores(cadena)
+  return sumarCadena(separadores, cadena)
 }
 
 export default calcularCadena;
