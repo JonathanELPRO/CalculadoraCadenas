@@ -10,12 +10,12 @@ function obtenerSeparadores(cadena){
   return separadores
 }
 
-function sumarCadena(separadores,cadena){
-  const CERO = 0;
-  let acumulacionSuma = CERO;
+function obtenerNumerosASumar(separadores,cadena)
+{
   const TAMANIOCADENA = cadena.length;
   let cadenaEstaVacia = TAMANIOCADENA != 0;
   let cadenaNumeros = [];
+  let numerosASumar=[]
   if (cadenaEstaVacia) {
     for (
       let iteradorCadena = 0;
@@ -46,12 +46,6 @@ function sumarCadena(separadores,cadena){
       if (!isNaN(caracter)) {
         cadenaNumeros.push(caracter);
       }
-      console.log(
-        caracterEsUnNumeroSeparadoPorComa,
-        caracterEsElUltimoNumero,
-        caracterEsUnNumeroSeparadoPorGuion,
-        caracterEsUnNumeroSeparadoPorCaracterEspecificadoPorUsuario
-      );
       if (
         (caracterEsUnNumeroSeparadoPorComa ||
           caracterEsElUltimoNumero ||
@@ -59,8 +53,7 @@ function sumarCadena(separadores,cadena){
           caracterEsUnNumeroSeparadoPorCaracterEspecificadoPorUsuario) &&
         parseInt(cadenaNumeros.join("")) <= 1000
       ) {
-        console.log(parseInt(cadenaNumeros.join("")));
-        acumulacionSuma = acumulacionSuma + parseInt(cadenaNumeros.join(""));
+        numerosASumar.push(parseInt(cadenaNumeros.join("")))
         cadenaNumeros = [];
       }
       if (
@@ -74,6 +67,12 @@ function sumarCadena(separadores,cadena){
       }
     }
   }
+  return numerosASumar
+}
+function sumarCadena(separadores,cadena){
+
+  let numerosASumar=obtenerNumerosASumar(separadores,cadena)
+  let acumulacionSuma = numerosASumar.reduce((acumulador, numero) => acumulador + numero, 0);
   return acumulacionSuma;
 }
 function calcularCadena(cadena) {
