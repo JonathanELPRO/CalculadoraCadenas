@@ -1,39 +1,75 @@
 function calcularCadena(cadena) {
-  const CERO=0
-  let acumulacionSuma=CERO
-  const TAMANIOCADENA=cadena.length
-  const SEPARADORUSUARIO=cadena[3]
-  let cadenaEstaVacia=TAMANIOCADENA!=0
-  let cadenaNumeros=[]
-  if (cadenaEstaVacia)
-    {
-      for (let iteradorCadena=0;iteradorCadena<TAMANIOCADENA;iteradorCadena++)
-        {
-          let caracter=cadena[iteradorCadena]
-          let siguienteCaracter=cadena[iteradorCadena+1]
-          let caracterEsUnNumeroSeparadoPorComa=!isNaN(caracter) && siguienteCaracter=="," && iteradorCadena!=TAMANIOCADENA-1
-          let caracterEsElUltimoNumero=iteradorCadena==TAMANIOCADENA-1
-          let caracterEsUnNumeroSeparadoPorGuion=!isNaN(caracter) && siguienteCaracter=="-" && iteradorCadena!=TAMANIOCADENA-1
-          let caracterEsUnNumeroSeparadoPorCaracterEspecificadoPorUsuario=!isNaN(caracter) && siguienteCaracter==SEPARADORUSUARIO && iteradorCadena!=TAMANIOCADENA-1
-          if (!isNaN(caracter)){
-            cadenaNumeros.push(caracter)
-          }
-          if((caracterEsUnNumeroSeparadoPorComa || caracterEsElUltimoNumero || caracterEsUnNumeroSeparadoPorGuion || caracterEsUnNumeroSeparadoPorCaracterEspecificadoPorUsuario) && (parseInt(cadenaNumeros.join(''))<=1000))
-            {
-              
-                  acumulacionSuma=acumulacionSuma+parseInt(cadenaNumeros.join(''))
+  const CERO = 0;
+  let acumulacionSuma = CERO;
+  const TAMANIOCADENA = cadena.length;
 
-                
-              cadenaNumeros=[]
-            }
-            if((parseInt(cadenaNumeros.join(''))>1000))
-              {
-                cadenaNumeros=[]
-              }
-
-        }
+  let cadenaEstaVacia = TAMANIOCADENA != 0;
+  let cadenaNumeros = [];
+  let regex = /\[(.*?)\]/g;
+  let separadores = [];
+  let resultado;
+  while ((resultado = regex.exec(cadena)) !== null) {
+    separadores.push(resultado[1]);
+  }
+  if (cadenaEstaVacia) {
+    for (
+      let iteradorCadena = 0;
+      iteradorCadena < TAMANIOCADENA;
+      iteradorCadena++
+    ) {
+      let caracter = cadena[iteradorCadena];
+      let siguienteCaracter = cadena[iteradorCadena + 1];
+      let caracterEsUnNumeroSeparadoPorComa =
+        !isNaN(caracter) &&
+        siguienteCaracter == "," &&
+        iteradorCadena != TAMANIOCADENA - 1;
+      let caracterEsElUltimoNumero = iteradorCadena == TAMANIOCADENA - 1;
+      let caracterEsUnNumeroSeparadoPorGuion =
+        !isNaN(caracter) &&
+        siguienteCaracter == "-" &&
+        iteradorCadena != TAMANIOCADENA - 1;
+      let caracterEsUnNumeroSeparadoPorCaracterEspecificadoPorUsuario =
+        !isNaN(caracter) &&
+        separadores.some((separador) => {
+          let porcionSiguiente = cadena.substring(
+            iteradorCadena + 1,
+            iteradorCadena + 1 + separador.length
+          );
+          return porcionSiguiente === separador;
+        }) &&
+        iteradorCadena != TAMANIOCADENA - 1;
+      if (!isNaN(caracter)) {
+        cadenaNumeros.push(caracter);
+      }
+      console.log(
+        caracterEsUnNumeroSeparadoPorComa,
+        caracterEsElUltimoNumero,
+        caracterEsUnNumeroSeparadoPorGuion,
+        caracterEsUnNumeroSeparadoPorCaracterEspecificadoPorUsuario
+      );
+      if (
+        (caracterEsUnNumeroSeparadoPorComa ||
+          caracterEsElUltimoNumero ||
+          caracterEsUnNumeroSeparadoPorGuion ||
+          caracterEsUnNumeroSeparadoPorCaracterEspecificadoPorUsuario) &&
+        parseInt(cadenaNumeros.join("")) <= 1000
+      ) {
+        console.log(parseInt(cadenaNumeros.join("")));
+        acumulacionSuma = acumulacionSuma + parseInt(cadenaNumeros.join(""));
+        cadenaNumeros = [];
+      }
+      if (
+        (caracterEsUnNumeroSeparadoPorComa ||
+          caracterEsElUltimoNumero ||
+          caracterEsUnNumeroSeparadoPorGuion ||
+          caracterEsUnNumeroSeparadoPorCaracterEspecificadoPorUsuario) &&
+        parseInt(cadenaNumeros.join("")) > 1000
+      ) {
+        cadenaNumeros = [];
+      }
     }
-  return acumulacionSuma
+  }
+  return acumulacionSuma;
 }
 
 export default calcularCadena;
