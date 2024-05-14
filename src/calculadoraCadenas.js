@@ -1,16 +1,22 @@
+function obtenerSeparadores(cadena){
+  let expresionRegular = /\[(.*?)\]/g;
+  let separadores = [];
+  let coincidencias;
+  let grupoDeCaptura
+  while ((coincidencias = expresionRegular.exec(cadena)) !== null) {
+    grupoDeCaptura=coincidencias[1]
+    separadores.push(grupoDeCaptura);
+  }
+  return separadores
+}
+
 function calcularCadena(cadena) {
   const CERO = 0;
   let acumulacionSuma = CERO;
   const TAMANIOCADENA = cadena.length;
-
   let cadenaEstaVacia = TAMANIOCADENA != 0;
   let cadenaNumeros = [];
-  let regex = /\[(.*?)\]/g;
-  let separadores = [];
-  let resultado;
-  while ((resultado = regex.exec(cadena)) !== null) {
-    separadores.push(resultado[1]);
-  }
+  let separadores =obtenerSeparadores(cadena)
   if (cadenaEstaVacia) {
     for (
       let iteradorCadena = 0;
